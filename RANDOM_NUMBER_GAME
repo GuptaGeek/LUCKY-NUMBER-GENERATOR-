@@ -1,0 +1,41 @@
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
+func main() {
+
+	fmt.Println("-------GAME-----------GAME-------------GAME-------")
+	if len(os.Args) == 1 {
+		fmt.Println("Enter the guess number please:")
+		return
+	}
+	a := os.Args[1]
+	guess, err := strconv.Atoi(a)
+	if err != nil {
+		fmt.Println("xxx---ERROR---XXX")
+		return
+	}
+	i := 0
+	rand.Seed(time.Now().UnixNano())
+	for n := 0; n < 5; n++ {
+		i = rand.Intn(guess + 1)
+		if i == guess {
+			fmt.Println(guess)
+			fmt.Println("XXXXXXXX---LUCKY NUMBER GENERATOR---XXXXXXXXX")
+			break
+		}
+		fmt.Printf("%d ", i)
+	}
+	if i != guess {
+		fmt.Println()
+		fmt.Println("XXXXXXX---BETTER LUCK NEXT TIME---XXXXXXX")
+	}
+	fmt.Println()
+
+}
